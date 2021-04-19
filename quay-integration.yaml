@@ -1,0 +1,12 @@
+apiVersion: redhatcop.redhat.io/v1alpha1
+kind: QuayIntegration
+metadata:
+  name: quayintegration
+  namespace: quay-operators
+spec:
+  clusterID: openshift
+  credentialsSecretName: openshift-operators/quay-integration
+  quayHostname: https://quay-registry-quay-quay-registry.apps.cluster-0d4c.0d4c.sandbox1493.opentlc.com
+  whitelistNamespaces:
+    - hello
+  insecureRegistry: true
