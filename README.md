@@ -28,6 +28,9 @@ oc new-project quay-registry
 
 ```
 oc create -f ./quay.yaml
+
+# this command will give you the Quay endpoint
+oc describe QuayRegistry quay-registry -n quay-registry | yq e ".Status" - | grep 'Registry Endpoint' | sed 's/Registry Endpoint: //g'
 ```
 
 4.  Open the Quay endpoint in a new url and create a new user and set a password, rest of steps assuming this quay endpoint is `https://quay-registry-quay-quay-registry.apps.cluster-b6a3.b6a3.sandbox1438.opentlc.com`
@@ -150,6 +153,5 @@ sudo security add-trusted-cert -d -r trustRoot -k /Library/Keychains/System.keyc
 3.  Login to quay registry
 
 ```
-# assuming $QUAY_URL is quay-registry-quay-quay-registry.apps.cluster-b6a3.b6a3.sandbox1438.opentlc.com
 docker login quay-registry-quay-quay-registry.apps.cluster-b6a3.b6a3.sandbox1438.opentlc.com
 ```
